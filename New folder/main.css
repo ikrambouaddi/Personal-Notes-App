@@ -1,0 +1,212 @@
+/* ---------------- Root Colors ---------------- */
+:root {
+  --bg: #1e1f23;          /* soft dark background */
+  --panel: #2a2b30;       /* panels, cards, composer */
+  --text: #e0e0e0;        /* main text */
+  --muted: #a0a0a0;       /* secondary text */
+  --accent: #7c5cff;      /* purple accent */
+  --accent-light: #9f86ff;/* lighter accent for hover */
+  --shadow: 0 8px 25px rgba(0,0,0,0.4);
+  --radius: 12px;
+  --padding: 14px;
+}
+
+/* ---------------- Reset & Body ---------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  padding: 20px;
+}
+
+/* ---------------- Header ---------------- */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+header h1 {
+  font-size: 24px;
+}
+header input[type="text"] {
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  border: none;
+  outline: none;
+  width: 200px;
+  background: #323338; /* soft dark input background */
+  color: var(--text);
+}
+header button {
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: background 0.3s;
+}
+header button:hover {
+  background: var(--accent-light);
+}
+
+/* ---------------- Composer ---------------- */
+#composer {
+  background: var(--panel);
+  padding: var(--padding);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+#composer input[type="text"],
+#composer textarea,
+#composer input[type="color"] {
+  padding: 10px;
+  border-radius: var(--radius);
+  border: none;
+  outline: none;
+  background: #3a3b41;  /* soft dark inputs */
+  color: var(--text);
+  width: 100%;
+}
+#composer textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+#composer label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#composer button {
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  align-self: flex-start;
+}
+#composer button:hover {
+  background: var(--accent-light);
+}
+
+/* ---------------- Notes Grid ---------------- */
+#notesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* ---------------- Note Card ---------------- */
+.note-card {
+  background: #2f3035;
+  padding: var(--padding);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+.note-card h3 {
+  font-size: 18px;
+}
+.note-card p {
+  white-space: pre-wrap;
+}
+.note-card .tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.note-card .tag {
+  background: #3a3b41;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ---------------- Note Card Buttons ---------------- */
+.note-card div button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin-right: 6px;
+}
+.note-card .editBtn {
+  background-color: #6c5cff;
+  color: #fff;
+}
+.note-card .editBtn:hover {
+  background-color: #9f86ff;
+  transform: scale(1.05);
+}
+.note-card .deleteBtn {
+  background-color: #ff5f5f;
+  color: #fff;
+}
+.note-card .deleteBtn:hover {
+  background-color: #ff7f7f;
+  transform: scale(1.05);
+}
+
+/* ---------------- Modal Editor ---------------- */
+dialog#editor {
+  border: none;
+  border-radius: var(--radius);
+  padding: var(--padding);
+  background: var(--panel);
+  color: var(--text);
+  width: 400px;
+  max-width: 90%;
+  box-shadow: var(--shadow);
+}
+dialog#editor::backdrop {
+  background: rgba(0,0,0,0.5);
+}
+dialog#editor h2 {
+  margin-bottom: 10px;
+}
+dialog#editor input[type="text"],
+dialog#editor textarea,
+dialog#editor input[type="color"] {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: var(--radius);
+  border: none;
+  outline: none;
+  background: #3a3b41;
+  color: var(--text);
+}
+dialog#editor button {
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: background 0.3s;
+}
+dialog#editor button:hover {
+  background: var(--accent-light);
+}

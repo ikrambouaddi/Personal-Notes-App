@@ -36,6 +36,20 @@
       <!-- Notes will appear here -->
     </section>
   </main>
+
+  <!-- Edit modal -->
+  <dialog id="editor">
+    <h2>Edit Note</h2>
+    <input type="text" id="e_title" placeholder="Title">
+    <textarea id="e_content" placeholder="Your note..."></textarea>
+    <input type="text" id="e_tags" placeholder="Tags">
+    <input type="color" id="e_color" value="#7c5cff">
+    <label>
+      <input type="checkbox" id="e_pinned"> Pin
+    </label>
+    <button id="saveEdit">Save</button>
+    <button id="closeEditor">Cancel</button>
+  </dialog>
 <script src="script.js"></script>
 </body>
 </html>
