@@ -26,3 +26,38 @@ const saveEdit = document.getElementById('saveEdit');
 const closeEditor = document.getElementById('closeEditor');
 
 let editIndex = null;
+
+/* ---------- Functions ---------- */
+
+// Render Notes
+function renderNotes(filter='') {
+  notesGrid.innerHTML = '';
+  // Sort pinned notes first
+  const sorted = [...notes].sort((a,b)=> b.pinned - a.pinned);
+  
+  sorted.forEach((note, index) => {
+    // Filter by search
+    const searchStr = note.title + note.content + note.tags.join(' ');
+    if (!searchStr.toLowerCase().includes(filter.toLowerCase())) return;
+
+    const card = document.createElement('div');
+    card.className = 'note-card';
+    card.style.backgroundColor = note.color;
+    
+    card.innerHTML = `
+      <h3>${note.title}</h3>
+      <p>${note.content}</p>
+      <div class="tags">${note.tags.map(tag=>`<span class="tag">${tag}</span>`).join('')}</div>
+      <div style="margin-top:6px;">
+        <button class="editBtn">Edit</button>
+        <button class="deleteBtn">Delete</button>
+      </div>
+    `;
+      // Edit
+    card.querySelector('.editBtn').onclick = () => openEditor(index);
+    // Delete
+    card.querySelector('.deleteBtn').onclick = () => deleteNote(index);
+
+    notesGrid.appendChild(card);
+  });
+}
