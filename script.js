@@ -61,3 +61,21 @@ function renderNotes(filter='') {
     notesGrid.appendChild(card);
   });
 }
+
+// Add Note
+addBtn.onclick = () => {
+  const title = titleInput.value.trim();
+  const content = contentInput.value.trim();
+  const tags = tagsInput.value.split(',').map(t=>t.trim()).filter(t=>t);
+  const color = colorInput.value;
+  const pinned = pinnedInput.checked;
+
+  if (!title && !content) return alert('Please write something!');
+
+  notes.push({title, content, tags, color, pinned});
+  saveNotes();
+  renderNotes();
+  titleInput.value = contentInput.value = tagsInput.value = '';
+  pinnedInput.checked = false;
+  colorInput.value = '#7c5cff';
+}
