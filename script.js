@@ -102,3 +102,18 @@ function openEditor(index) {
   e_pinned.checked = note.pinned;
   editor.showModal();
 }
+
+
+
+// Save Edit
+saveEdit.onclick = () => {
+  const note = notes[editIndex];
+  note.title = e_title.value.trim();
+  note.content = e_content.value.trim();
+  note.tags = e_tags.value.split(',').map(t=>t.trim()).filter(t=>t);
+  note.color = e_color.value;
+  note.pinned = e_pinned.checked;
+  saveNotes();
+  renderNotes(searchInput.value);
+  editor.close();
+}
