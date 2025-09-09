@@ -79,3 +79,26 @@ addBtn.onclick = () => {
   pinnedInput.checked = false;
   colorInput.value = '#7c5cff';
 }
+
+
+
+// Delete Note
+function deleteNote(index) {
+  if(confirm('Delete this note?')) {
+    notes.splice(index,1);
+    saveNotes();
+    renderNotes(searchInput.value);
+  }
+}
+
+// Open Editor
+function openEditor(index) {
+  editIndex = index;
+  const note = notes[index];
+  e_title.value = note.title;
+  e_content.value = note.content;
+  e_tags.value = note.tags.join(', ');
+  e_color.value = note.color;
+  e_pinned.checked = note.pinned;
+  editor.showModal();
+}
