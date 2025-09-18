@@ -135,3 +135,25 @@ exportBtn.onclick = () => {
   a.download = 'notes.json';
   a.click();
 }
+
+
+// Import Notes
+importFile.onchange = (e) => {
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const imported = JSON.parse(reader.result);
+      if(Array.isArray(imported)) {
+        notes = imported;
+        saveNotes();
+        renderNotes();
+      } else alert('Invalid file format!');
+    } catch(err) {
+      alert('Error reading file');
+    }
+  }
+  reader.readAsText(file);
+}
+
