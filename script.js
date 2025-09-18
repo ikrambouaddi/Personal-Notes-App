@@ -117,3 +117,21 @@ saveEdit.onclick = () => {
   renderNotes(searchInput.value);
   editor.close();
 }
+
+
+// Close Editor
+closeEditor.onclick = () => editor.close();
+
+// Search Notes
+searchInput.oninput = () => renderNotes(searchInput.value);
+
+// Export Notes
+exportBtn.onclick = () => {
+  const dataStr = JSON.stringify(notes, null, 2);
+  const blob = new Blob([dataStr], {type: "application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'notes.json';
+  a.click();
+}
